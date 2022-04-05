@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		09B3704927FC5B5E008FB89F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B3704827FC5B5E008FB89F /* main.c */; };
+		09B3707627FC5D06008FB89F /* Stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B3706E27FC5D06008FB89F /* Stack.c */; };
+		09B3707727FC5D06008FB89F /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B3707027FC5D06008FB89F /* Queue.c */; };
+		09B3707827FC5D06008FB89F /* Main.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B3707227FC5D06008FB89F /* Main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,16 @@
 /* Begin PBXFileReference section */
 		09B3704527FC5B5E008FB89F /* Exersice_3.c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Exersice_3.c; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B3704827FC5B5E008FB89F /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		09B3706B27FC5D06008FB89F /* Adv_C_Exe3.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Adv_C_Exe3.sln; sourceTree = "<group>"; };
+		09B3706C27FC5D06008FB89F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		09B3706E27FC5D06008FB89F /* Stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Stack.c; sourceTree = "<group>"; };
+		09B3706F27FC5D06008FB89F /* Adv_C_Exe3.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Adv_C_Exe3.vcxproj; sourceTree = "<group>"; };
+		09B3707027FC5D06008FB89F /* Queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
+		09B3707127FC5D06008FB89F /* Adv_C_Exe3.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Adv_C_Exe3.vcxproj.filters; sourceTree = "<group>"; };
+		09B3707227FC5D06008FB89F /* Main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Main.c; sourceTree = "<group>"; };
+		09B3707327FC5D06008FB89F /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		09B3707427FC5D06008FB89F /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		09B3707527FC5D06008FB89F /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +70,36 @@
 		09B3704727FC5B5E008FB89F /* Exersice_3.c */ = {
 			isa = PBXGroup;
 			children = (
+				09B3706A27FC5D06008FB89F /* Adv_C_Exe3 */,
 				09B3704827FC5B5E008FB89F /* main.c */,
 			);
 			path = Exersice_3.c;
+			sourceTree = "<group>";
+		};
+		09B3706A27FC5D06008FB89F /* Adv_C_Exe3 */ = {
+			isa = PBXGroup;
+			children = (
+				09B3706B27FC5D06008FB89F /* Adv_C_Exe3.sln */,
+				09B3706C27FC5D06008FB89F /* .gitignore */,
+				09B3706D27FC5D06008FB89F /* Adv_C_Exe3 */,
+				09B3707527FC5D06008FB89F /* .gitattributes */,
+			);
+			name = Adv_C_Exe3;
+			path = ../../Adv_C_Exe3;
+			sourceTree = "<group>";
+		};
+		09B3706D27FC5D06008FB89F /* Adv_C_Exe3 */ = {
+			isa = PBXGroup;
+			children = (
+				09B3706E27FC5D06008FB89F /* Stack.c */,
+				09B3706F27FC5D06008FB89F /* Adv_C_Exe3.vcxproj */,
+				09B3707027FC5D06008FB89F /* Queue.c */,
+				09B3707127FC5D06008FB89F /* Adv_C_Exe3.vcxproj.filters */,
+				09B3707227FC5D06008FB89F /* Main.c */,
+				09B3707327FC5D06008FB89F /* Stack.h */,
+				09B3707427FC5D06008FB89F /* Queue.h */,
+			);
+			path = Adv_C_Exe3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +159,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B3707827FC5D06008FB89F /* Main.c in Sources */,
+				09B3707727FC5D06008FB89F /* Queue.c in Sources */,
+				09B3707627FC5D06008FB89F /* Stack.c in Sources */,
 				09B3704927FC5B5E008FB89F /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
