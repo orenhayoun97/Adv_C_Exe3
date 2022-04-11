@@ -99,3 +99,4 @@ int isPalindrome(Stack* s);
 /// 
 //void rotateStack(Stack* s, int n);
 //void sendToAnotherStack(Stack *s,Stack *s1);
+int checkHowMuchInStack(Stack *s);
