@@ -1,4 +1,6 @@
 #include "Queue.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /***************** Queue ADT Implementation *****************/
 
@@ -17,15 +19,15 @@ void enqueue(Queue* q, unsigned int data)
 	// add your code here
 }
 
-unsigned int dequeue(Queue* q)
-{
-	// add your code here
-}
-
-int isEmptyQueue(const Queue* q)
-{
-	// add your code here
-}
+//unsigned int dequeue(Queue* q)
+//{
+//	// add your code here
+//}
+//
+//int isEmptyQueue(const Queue* q)
+//{
+//	// add your code here
+//};
 
 /***************** Functions using Queues - Implementation/definition **************************/
 

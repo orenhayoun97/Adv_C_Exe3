@@ -2,7 +2,14 @@
 #include "Stack.h"
 #include "Queue.h"
 
-void main()
+int main()
 {
-	// add your code here
+    Stack *s = NULL;
+    initStack(s);
+    push(s,'A');
+    push(s,'B');
+    push(s,'B');
+    push(s,'A');
+    (isPalindrome(s)) ? printf("Palindrome\n") : printf(" not Palindrome\n");
+    return 0;
 }
