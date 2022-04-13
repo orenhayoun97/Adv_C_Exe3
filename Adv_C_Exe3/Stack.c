@@ -43,7 +43,7 @@ void push(Stack* s, char data)
 char pop(Stack* s)
 {
     // deal with empty list
-    if(isEmptyStack(s)) return NULL;
+    if(isEmptyStack(s)) exit(0);
     // deal with list
     char data;
     charNode* temp = s->head;
@@ -62,92 +62,38 @@ int isEmptyStack(const Stack* s)
     else return 0;
 }
 
-//void sendToAnotherStack(Stack *s,Stack *s1){
-//    charNode *temp = s1->head;
-//    // if empty list
-//    if(!s || !s1) return;
-//    // not empty
-//    while(temp == NULL){
-//        push(s,temp->data);
-//        temp = temp->next;
-//    }
-//}
-//void printStack(Stack *s){ // print from the buttom to the top
-//    Stack *helper;
-//    while(s->head == NULL){
-//        push(helper,s->head->data);
-//    }
-//    destroyStack(s);
-//    while(helper->head == NULL){
-//        printf("%c",pop(helper));// free inside the function
-//    }
-//    return;
-//}
-
-/*************** Functions using stacks - Implementation/definition **************************/
-
-//void flipBetweenHashes(const char* sentence)
-//{
-//    Stack *s, *s_help;
-//    char *temp = sentence;
-//    int check = 0;
-//	// deal with empty sentence
-//    if(!sentence){
-//        printf("there is no sentece...");
-//        return;
-//    }
-//    // deal with a sentence
-//    while(*temp != '\0'){
-//        // deal with no '#'
-//        if(*temp == '#'){
-//            check = 0;
-//            temp++;
-//            initStack(s_help);
-//            // deal with 2 '#' one after one ##
-//            while(temp != '#'){
-//                check = 1;
-//                push(s_help,*temp);
-//                temp++;
-//            }
-//            if(check) sendToAnotherStack(s,s_help); // put in header stack the helper stack
-//        }
-//        push(s,*temp);
-//        temp++;
-//    }
-//    destroyStack(s_help);
-//    printStack(s);
-//    return;
-//}
 void flipBetweenHashes(const char* sentence){
     
-    Stack *s = NULL;
+    Stack *s = (Stack*) calloc(1,sizeof(Stack));
     initStack(s);
     char *temp = sentence;
     // deal with empty sentence
     if(!sentence){
-        printf("there is no sentece...");
+        printf("there is no sentence...");
         return;
     }
     // deal with sentence
     while(*temp != '\0'){
-        if(*temp == '#'){
+        if(*temp == '#'){ //"hello##ym#na#em#isoren"
             temp++;
             while(*temp != '#'){
                 push(s,*temp);
-                printf("%c",pop(s));
                 temp++;
+            }
+            while(!isEmptyStack(s)){
+                printf("%c",pop(s));
             }
             temp++;
         }
-        printf("%c",*temp);
-        temp++;
+            printf("%c",*temp);
+            temp++;
     }
     destroyStack(s);
 }
-int checkHowMuchInStack(Stack *s){
-    charNode *temp = s->head;
+int checkHowMuchInStack(charNode *head){
+    charNode *temp = head;
     int counter = 0;
-    while(!temp){
+    while(temp != NULL){
         counter++;
         temp = temp->next;
     }
@@ -162,9 +108,14 @@ int isPalindrome(Stack* s)
     if(isEmptyStack(s)) return 1;
     
     int i = 0;
-    Stack *s_help = NULL;
+    // need to allocate a place int memory for this stack
+    Stack *s_help = (Stack*) calloc(1,sizeof(Stack));
+    if(!s_help){
+        printf("allocation faield...\n");
+        exit(1);
+    }
     initStack(s_help);
-    int size = checkHowMuchInStack(s);
+    int size = checkHowMuchInStack(s->head);
     if(!size%2){ //  Zogi = True
         for(i = 0;i < size/2 ;i++){
             push(s_help,pop(s));
