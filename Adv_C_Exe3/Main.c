@@ -29,7 +29,7 @@ int main()
     push(s,'e');
     push(s,'m');
     
-    rotateStack(s,2);
+    rotateStack(s,3);
     PrintTheStack(s);
     printf("\n");
     
