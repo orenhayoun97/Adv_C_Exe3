@@ -7,6 +7,7 @@
 void initStack(Stack* s)
 {
     s->head = NULL;
+    return;
 }
 
 void destroyStack(Stack* s)
@@ -57,14 +58,19 @@ char pop(Stack* s)
 int isEmptyStack(const Stack* s)
 {
     // empty list
-    if(!s->head) return 1;
+    if(s->head == NULL) return 1;
     // not empty
     else return 0;
 }
 
 void flipBetweenHashes(const char* sentence){
     
-    Stack *s = (Stack*) calloc(1,sizeof(Stack));
+    Stack *s;
+    s = (Stack*) calloc(1,sizeof(Stack));
+    if(!s){
+        printf("allocation faield...\n");
+        exit(1);
+    }
     initStack(s);
     char *temp = sentence;
     // deal with empty sentence
@@ -74,13 +80,15 @@ void flipBetweenHashes(const char* sentence){
     }
     // deal with sentence
     while(*temp != '\0'){
-        if(*temp == '#'){ //"hello##ym#na#em#isoren"
-            temp++;
+        if(*temp == '#'){
+            while(*temp == '#'){
+                temp++;
+            }
             while(*temp != '#'){
                 push(s,*temp);
                 temp++;
             }
-            while(!isEmptyStack(s)){
+            while(isEmptyStack(s) == 0){
                 printf("%c",pop(s));
             }
             temp++;
@@ -89,6 +97,7 @@ void flipBetweenHashes(const char* sentence){
             temp++;
     }
     destroyStack(s);
+    return;
 }
 int checkHowMuchInStack(charNode *head){
     charNode *temp = head;
@@ -109,32 +118,80 @@ int isPalindrome(Stack* s)
     
     int i = 0;
     // need to allocate a place int memory for this stack
-    Stack *s_help = (Stack*) calloc(1,sizeof(Stack));
-    if(!s_help){
+    Stack *helper;
+    helper = (Stack*) malloc(sizeof(Stack));
+    if(!s){
         printf("allocation faield...\n");
         exit(1);
     }
-    initStack(s_help);
+    initStack(helper);
     int size = checkHowMuchInStack(s->head);
     if(!size%2){ //  Zogi = True
         for(i = 0;i < size/2 ;i++){
-            push(s_help,pop(s));
+            push(helper,pop(s));
         }
     }
     else{ // E Zogi
         for(i = 0;i < size/2 ;i++){
-            push(s_help,pop(s));
+            push(helper,pop(s));
         }
         pop(s);
     }
     for(i=0;i < size/2 ; i++){
-        if(pop(s) != pop(s_help)){
+        if(pop(s) != pop(helper)){
             return 0;
         }
     }
     return 1;
 }
+// function that flip the Stack
+Stack* FlipTheStack(Stack *s){
+    Stack *helper;
+    helper = (Stack*) malloc(sizeof(Stack));
+    if(!s){
+        printf("allocation faield...\n");
+        exit(1);
+    }
+    initStack(helper);
+    charNode *temp = s->head;
+    while(temp != NULL){
+        push(helper,temp->data);
+        temp = temp->next;
+    }
+    destroyStack(s);
+    return helper;
+}
 void rotateStack(Stack* s, int n)
 {
-	// add your code here
+    Stack *helper;
+    helper = (Stack*) malloc(sizeof(Stack));
+    if(!s){
+        printf("allocation faield...\n");
+        exit(1);
+    }
+    initStack(helper);
+    // case with empty stack
+    if(isEmptyStack(s)){
+        printf("the string is empty...\n");
+        return;
+    }
+    // case with n elements that bigger than the elements on Stack
+    if(n >= checkHowMuchInStack(s->head)){
+        printf("there is no %d elements in Stack\n",n);
+    }
+    s = FlipTheStack(s); // flip the Stack
+    for(int i = 0; i < n ;i++){ // save the n elements from the buttom
+        push(helper,pop(s));
+    }
+    s = FlipTheStack(s); // flip the Stack
+    while(helper->head != NULL){
+        push(s,pop(helper)); // push the n elements to the top
+    }
+    destroyStack(helper); // delete the helper stack
+}
+void PrintTheStack(Stack  *s){
+    while(s->head != NULL){
+        printf("%c",pop(s));
+    }
+    return;
 }
