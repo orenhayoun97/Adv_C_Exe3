@@ -102,3 +102,4 @@ void rotateStack(Stack* s, int n);
 int checkHowMuchInStack(charNode *head);
 Stack* FlipTheStack(Stack *s);
 void PrintTheStack(Stack  *s);
+

@@ -89,3 +89,6 @@ void cutAndReplace(Queue* q);
 /// </summary>
 /// <param name="s"></param>
 void sortKidsFirst(Queue* q);
+int SizeCheck(Queue* q);
+int AverageNum(Queue* q, int size);
+void PrintQueue(Queue *q);
