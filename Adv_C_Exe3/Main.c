@@ -41,17 +41,18 @@ int main()
         printf("Allocation failed...\n");
         exit(0);
     }
-    enqueue(q,14);
     enqueue(q,6);
-    enqueue(q,5);
-    enqueue(q,4);
-    enqueue(q,3);
+    enqueue(q,6);
+    enqueue(q,2);
     enqueue(q,2);
     enqueue(q,1);
+    enqueue(q,14);
+    enqueue(q,3);
     
 //    rotateQueue(q);
     PrintQueue(q);
-    cutAndReplace(q);
+//    cutAndReplace(q);
+    sortKidsFirst(q);
     PrintQueue(q);
     
     return 0;

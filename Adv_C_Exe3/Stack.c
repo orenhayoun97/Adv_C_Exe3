@@ -175,9 +175,14 @@ void rotateStack(Stack* s, int n)
         printf("the string is empty...\n");
         return;
     }
+    if(n < 0){
+        printf("The number %d is negative\n",n);
+        return;
+    }
     // case with n elements that bigger than the elements on Stack
-    if(n >= checkHowMuchInStack(s->head)){
+    if(n > checkHowMuchInStack(s->head)){
         printf("there is no %d elements in Stack\n",n);
+        return;
     }
     s = FlipTheStack(s); // flip the Stack
     for(int i = 0; i < n ;i++){ // save the n elements from the buttom

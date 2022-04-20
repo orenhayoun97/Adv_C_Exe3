@@ -41,6 +41,10 @@ unsigned int dequeue(Queue* q)
     int data = q->head->data;
     q->head = q->head->next;
     free(temp);
+    if(isEmptyQueue(q)){
+        initQueue(q);
+        return data;
+    }
     return data;
 }
 
@@ -56,7 +60,7 @@ void rotateQueue(Queue* q)
 {
 	// case with empty queue
     if(q == NULL){
-        printf("the list is empty...\n");
+        printf("the Queue is empty...\n");
         return;
     }
     // case with a queue
@@ -151,7 +155,60 @@ void PrintQueue(Queue *q){
     return;
 }
 
+int CheckTheLowestNumber(Queue *q){
+    intNode *lowest,*beflow,*prev,*temp;
+    int data = 0;
+    lowest = temp = q->head;
+    beflow = prev = NULL;
+    while(temp != NULL){
+        if(lowest->data > temp->data){
+            beflow = prev;
+            lowest = temp;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    if(beflow != NULL){
+        beflow->next = lowest->next;
+    }
+    else{
+        q->head = lowest->next;
+    }
+    
+    data = lowest->data;
+    free(lowest);
+    return data;
+}
 void sortKidsFirst(Queue* q)
 {
-	// add your code here
+    // Check if the Queue is nullptr
+    if(q == NULL){
+        printf("There is no Queue...\n");
+        return;
+    }
+	// Check if Queue is empty
+    if(isEmptyQueue(q)){
+        printf("The Queue is empty...\n");
+        return;
+    }
+    // deal with one node
+    if(q->head == q->tail){
+        printf("There is only one node in this Queue");
+        return;
+    }
+    Queue *helper = (Queue*) calloc(1,sizeof(Queue));
+    initQueue(helper);
+    if(helper == NULL){
+        printf("Allocation failed...\n");
+        exit(1);
+    }
+    while(!isEmptyQueue(q)){
+        enqueue(helper,CheckTheLowestNumber(q));
+    }
+    while(!isEmptyQueue(helper)){
+        enqueue(q,dequeue(helper));
+    }
+    destroyQueue(helper);
+    free(helper);
+    return;
 }
