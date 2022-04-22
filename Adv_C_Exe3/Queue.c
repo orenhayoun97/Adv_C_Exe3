@@ -60,13 +60,13 @@ void rotateQueue(Queue* q)
 {
 	// case with empty queue
     if(q == NULL){
-        printf("the Queue is empty...\n");
+        printf("**the Queue is empty...\n");
         return;
     }
     // case with a queue
     Queue* helper = (Queue*) calloc(1,sizeof(Queue));
     if(helper == NULL){
-        printf("Allocation failed...\n");
+        printf("***Allocation failed...\n");
         exit(1);
     }
     while(q->head->next != NULL){
@@ -105,7 +105,7 @@ void CombanitonOfQueue(Queue *q, Queue *helper,int size){
 void ChangeDirection(Queue* q,int size){
     Queue* helper = (Queue*) calloc(1,sizeof(Queue));
     if(helper == NULL){
-        printf("Allocation failed...\n");
+        printf("***Allocation failed...\n");
         exit(1);
     }
     for(int i = 0 ; i < size ; i++){
@@ -118,17 +118,17 @@ void cutAndReplace(Queue* q)
 {
     // case with Nullptr Queue
     if(q == NULL){
-        printf("There is no Queue...\n");
+        printf("**There is no Queue...\n");
         return;
     }
     Queue* helper = (Queue*) calloc(1,sizeof(Queue));
     if(helper == NULL){
-        printf("Allocation failed...\n");
+        printf("***Allocation failed...\n");
         exit(1);
     }
     // case with empty Queue
     if(isEmptyQueue(q)){
-        printf("The Queue is empty...\n");
+        printf("**The Queue is empty...\n");
         return;
     }
     int size = SizeCheck(q);
@@ -183,23 +183,23 @@ void sortKidsFirst(Queue* q)
 {
     // Check if the Queue is nullptr
     if(q == NULL){
-        printf("There is no Queue...\n");
+        printf("**There is no Queue...\n");
         return;
     }
 	// Check if Queue is empty
     if(isEmptyQueue(q)){
-        printf("The Queue is empty...\n");
+        printf("**The Queue is empty...\n");
         return;
     }
     // deal with one node
     if(q->head == q->tail){
-        printf("There is only one node in this Queue");
+        printf("**There is only one node in this Queue");
         return;
     }
     Queue *helper = (Queue*) calloc(1,sizeof(Queue));
     initQueue(helper);
     if(helper == NULL){
-        printf("Allocation failed...\n");
+        printf("***Allocation failed...\n");
         exit(1);
     }
     while(!isEmptyQueue(q)){

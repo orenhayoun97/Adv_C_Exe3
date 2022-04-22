@@ -145,58 +145,55 @@ int isPalindrome(Stack* s)
     return 1;
 }
 // function that flip the Stack
-Stack* FlipTheStack(Stack *s){
-    Stack *helper;
-    helper = (Stack*) malloc(sizeof(Stack));
-    if(!s){
-        printf("allocation faield...\n");
-        exit(1);
-    }
-    initStack(helper);
-    charNode *temp = s->head;
-    while(temp != NULL){
-        push(helper,temp->data);
-        temp = temp->next;
-    }
+void FlipTheStack(Stack *s){
+    Stack helper;
+    helper = *s;
     destroyStack(s);
-    return helper;
+    initStack(s);
+    while(helper.head != NULL){
+        push(s,helper.head->data);
+        helper.head = helper.head->next;
+    }
+    return;
 }
 void rotateStack(Stack* s, int n)
 {
-    Stack *helper;
-    helper = (Stack*) malloc(sizeof(Stack));
-    if(!s){
-        printf("allocation faield...\n");
+    Stack *helper = (Stack*) calloc(1,sizeof(Stack));
+    if(!helper){
+        printf("***allocation faield...\n");
         exit(1);
     }
-    initStack(helper);
     // case with empty stack
     if(isEmptyStack(s)){
-        printf("the string is empty...\n");
+        printf("**the string is empty...\n");
         return;
     }
     if(n < 0){
-        printf("The number %d is negative\n",n);
+        printf("**The number %d is negative\n",n);
         return;
     }
     // case with n elements that bigger than the elements on Stack
     if(n > checkHowMuchInStack(s->head)){
-        printf("there is no %d elements in Stack\n",n);
+        printf("**there is no %d elements in Stack\n",n);
         return;
     }
-    s = FlipTheStack(s); // flip the Stack
+    FlipTheStack(s); // flip the Stack
     for(int i = 0; i < n ;i++){ // save the n elements from the buttom
         push(helper,pop(s));
     }
-    s = FlipTheStack(s); // flip the Stack
+    FlipTheStack(s); // flip the Stack again
     while(helper->head != NULL){
         push(s,pop(helper)); // push the n elements to the top
     }
     destroyStack(helper); // delete the helper stack
+    free(helper);
 }
 void PrintTheStack(Stack  *s){
-    while(s->head != NULL){
-        printf("%c",pop(s));
+    charNode *temp = s->head;
+    while(temp != NULL){
+        printf("%c",temp->data);
+        temp = temp->next;
     }
+    printf("\n");
     return;
 }

@@ -100,6 +100,6 @@ int isPalindrome(Stack* s);
 void rotateStack(Stack* s, int n);
 //void sendToAnotherStack(Stack *s,Stack *s1);
 int checkHowMuchInStack(charNode *head);
-Stack* FlipTheStack(Stack *s);
+void FlipTheStack(Stack *s);
 void PrintTheStack(Stack  *s);
 
