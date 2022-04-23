@@ -14,10 +14,12 @@ void destroyQueue(Queue* q)
 {
     // empty queue
     if(q == NULL) return;
-    intNode *temp = q->head;
+    intNode *temp,*clear;
+    temp = clear = q->head;
     while(temp != NULL){
-        free(temp);
         temp = temp->next;
+        free(clear);
+        clear = temp;
     }
     return;
 }
